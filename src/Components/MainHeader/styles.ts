@@ -18,6 +18,10 @@ export const Profile = styled.div`
   color: ${(props) => props.theme.colors.white};
 `;
 
-export const Welcome = styled.h3``;
+export const Welcome = styled.h3`
+  font-size: 1.1rem;
+`;
 
-export const UserName = styled.span``;
+export const UserName = styled.span`
+  font-size: 0.75rem;
+`;
