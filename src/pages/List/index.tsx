@@ -1,10 +1,12 @@
 import React from "react";
 
-import { Container } from "./styles";
+import { Container, Content } from "./styles";
 
 import SelectInput from "../../Components/SelectInput";
 
 import ContentHeader from "../../Components/ContentHeader";
+
+import HistoryFinanceCard from "../../Components/HistoryFinanceCard";
 
 const List: React.FC = () => {
   const options = [
@@ -27,6 +29,78 @@ const List: React.FC = () => {
       <ContentHeader title="Saídas" lineColor="#e44c4e">
         <SelectInput options={options} />
       </ContentHeader>
+      <Content>
+        <HistoryFinanceCard
+          cardColor="#313862"
+          tagColor="#e44c4e"
+          title="Conta de Luz"
+          subtitle="17/02/1994"
+          amout="R$ 250,00"
+        />
+        <HistoryFinanceCard
+          cardColor="#313862"
+          tagColor="#e44c4e"
+          title="Conta de Luz"
+          subtitle="17/02/1994"
+          amout="R$ 250,00"
+        />
+        <HistoryFinanceCard
+          cardColor="#313862"
+          tagColor="#e44c4e"
+          title="Conta de Luz"
+          subtitle="17/02/1994"
+          amout="R$ 250,00"
+        />
+        <HistoryFinanceCard
+          cardColor="#313862"
+          tagColor="#e44c4e"
+          title="Conta de Luz"
+          subtitle="17/02/1994"
+          amout="R$ 250,00"
+        />
+        <HistoryFinanceCard
+          cardColor="#313862"
+          tagColor="#e44c4e"
+          title="Conta de Luz"
+          subtitle="17/02/1994"
+          amout="R$ 250,00"
+        />
+        <HistoryFinanceCard
+          cardColor="#313862"
+          tagColor="#e44c4e"
+          title="Conta de Luz"
+          subtitle="17/02/1994"
+          amout="R$ 250,00"
+        />
+        <HistoryFinanceCard
+          cardColor="#313862"
+          tagColor="#e44c4e"
+          title="Conta de Luz"
+          subtitle="17/02/1994"
+          amout="R$ 250,00"
+        />
+        <HistoryFinanceCard
+          cardColor="#313862"
+          tagColor="#e44c4e"
+          title="Conta de Luz"
+          subtitle="17/02/1994"
+          amout="R$ 250,00"
+        />
+        <HistoryFinanceCard
+          cardColor="#313862"
+          tagColor="#e44c4e"
+          title="Conta de Luz"
+          subtitle="17/02/1994"
+          amout="R$ 250,00"
+        />
+        <HistoryFinanceCard
+          cardColor="#313862"
+          tagColor="#e44c4e"
+          title="Conta de Luz"
+          subtitle="17/02/1994"
+          amout="R$ 250,00"
+        />
+      </Content>
     </Container>
   );
 };
