@@ -100,6 +100,20 @@ const List: React.FC = () => {
           subtitle="17/02/1994"
           amout="R$ 250,00"
         />
+        <HistoryFinanceCard
+          cardColor="#313862"
+          tagColor="#e44c4e"
+          title="Conta de Luz"
+          subtitle="17/02/1994"
+          amout="R$ 250,00"
+        />
+        <HistoryFinanceCard
+          cardColor="#313862"
+          tagColor="#e44c4e"
+          title="Conta de Luz"
+          subtitle="17/02/1994"
+          amout="R$ 250,00"
+        />
       </Content>
     </Container>
   );
