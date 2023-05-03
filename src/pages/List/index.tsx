@@ -10,8 +10,8 @@ const List: React.FC = () => {
   const { type } = useParams();
   const titleOptions = useMemo(() => {
     return type === "entradas"
-      ? { title: "Entradas", lineColor: "#e44c4e" }
-      : { title: "Saídas", lineColor: "rgb(78, 65, 240)" };
+      ? { title: "Entradas", lineColor: "#f7931b" }
+      : { title: "Saídas", lineColor: "#e44c4e" };
   }, [type]);
 
   const months = [
