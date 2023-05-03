@@ -6,13 +6,13 @@ import dark from "./pages/styles/themes/dark";
 import List from "./pages/List";
 import ContentHeader from "./Components/ContentHeader";
 
+import Routes from "./routes";
+
 const App: React.FC = () => {
   return (
     <ThemeProvider theme={dark}>
       <GlobalStyles />
-      <Layout>
-        <List />
-      </Layout>
+      <Routes />
     </ThemeProvider>
   );
 };
