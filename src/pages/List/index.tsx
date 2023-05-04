@@ -12,15 +12,22 @@ import expenses from "../../repositories/expenses";
 import formatCurrency from "../../utils/formatCurrency";
 import formatDate from "../../utils/formatDate";
 
+interface IData {
+  id: string;
+  description: string;
+  amountFormated: string;
+  frequency: string;
+  dateFormated: string;
+  tagColor: string;
+}
+
 const List: React.FC = () => {
-  interface IData {
-    id: string;
-    description: string;
-    amountFormated: string;
-    frequency: string;
-    dateFormated: string;
-    tagColor: string;
-  }
+  const [monthSelected, setMonthSelected] = useState<string>(
+    String(new Date().getMonth() + 1)
+  );
+  const [yearSelected, setYearSelected] = useState<string>(
+    String(new Date().getFullYear())
+  );
 
   const { type } = useParams();
   const titleOptions = useMemo(() => {
@@ -37,13 +44,14 @@ const List: React.FC = () => {
 
   const months = [
     {
-      value: 1,
-      label: "Janeiro",
-    },
-    {
       value: 2,
       label: "Fevereiro",
     },
+    {
+      value: 1,
+      label: "Janeiro",
+    },
+
     {
       value: 3,
       label: "Março",
@@ -87,8 +95,8 @@ const List: React.FC = () => {
   ];
 
   const years = [
-    { value: 2023, label: 2023 },
     { value: 2022, label: 2022 },
+    { value: 2023, label: 2023 },
   ];
 
   useEffect(() => {
@@ -111,8 +119,16 @@ const List: React.FC = () => {
         title={titleOptions.title}
         lineColor={titleOptions.lineColor}
       >
-        <SelectInput options={months} />
-        <SelectInput options={years} />
+        <SelectInput
+          options={months}
+          onChange={(e) => setMonthSelected(e.target.value)}
+          defaultValue={monthSelected}
+        />
+        <SelectInput
+          options={years}
+          onChange={(e) => setYearSelected(e.target.value)}
+          defaultValue={yearSelected}
+        />
       </ContentHeader>
       <Filters>
         <button type="button" className="tag-filter tag-filter-recurrent">
