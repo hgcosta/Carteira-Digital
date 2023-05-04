@@ -44,14 +44,13 @@ const List: React.FC = () => {
 
   const months = [
     {
-      value: 2,
-      label: "Fevereiro",
-    },
-    {
       value: 1,
       label: "Janeiro",
     },
-
+    {
+      value: 2,
+      label: "Fevereiro",
+    },
     {
       value: 3,
       label: "Março",
@@ -100,9 +99,17 @@ const List: React.FC = () => {
   ];
 
   useEffect(() => {
-    const response = listData.map((item) => {
+    const filteredDate = listData.filter((item) => {
+      const date = new Date(item.date);
+      const month = String(date.getMonth() + 1);
+      const year = String(date.getFullYear());
+
+      return month === monthSelected && year === yearSelected;
+    });
+
+    const formattedDate = filteredDate.map((item) => {
       return {
-        id: String(Math.random() * data.length),
+        id: String(new Date().getTime()) + item.amount,
         description: item.description,
         amountFormated: formatCurrency(Number(item.amount)),
         frequency: item.frequency,
@@ -110,8 +117,8 @@ const List: React.FC = () => {
         tagColor: item.frequency === "recorrente" ? "#4E41F0" : "#E44C4E",
       };
     });
-    setData(response);
-  }, []);
+    setData(formattedDate);
+  }, [listData, monthSelected, yearSelected]);
 
   return (
     <Container>
