@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import { Container, Content, Filters } from "./styles";
 import { useParams } from "react-router-dom";
 
@@ -6,12 +6,30 @@ import SelectInput from "../../Components/SelectInput";
 import ContentHeader from "../../Components/ContentHeader";
 import HistoryFinanceCard from "../../Components/HistoryFinanceCard";
 
+import gains from "../../repositories/gains";
+import expenses from "../../repositories/expenses";
+
 const List: React.FC = () => {
+  interface IData {
+    id: string;
+    description: string;
+    amountFormated: string;
+    frequency: string;
+    dateFormated: string;
+    tagColor: string;
+  }
+
   const { type } = useParams();
   const titleOptions = useMemo(() => {
     return type === "entradas"
       ? { title: "Entradas", lineColor: "#f7931b" }
       : { title: "Saídas", lineColor: "#e44c4e" };
+  }, [type]);
+
+  const [data, setData] = useState<IData[]>([]);
+
+  const listData = useMemo(() => {
+    return type === "entradas" ? gains : expenses;
   }, [type]);
 
   const months = [
@@ -69,6 +87,21 @@ const List: React.FC = () => {
     { value: 2023, label: 2023 },
     { value: 2022, label: 2022 },
   ];
+
+  useEffect(() => {
+    const response = listData.map((item) => {
+      return {
+        id: String(Math.random() * data.length),
+        description: item.description,
+        amountFormated: item.amount,
+        frequency: item.frequency,
+        dateFormated: item.date,
+        tagColor: item.frequency === "recorrente" ? "#4E41F0" : "#E44C4E",
+      };
+    });
+    setData(response);
+  }, []);
+
   return (
     <Container>
       <ContentHeader
@@ -87,12 +120,15 @@ const List: React.FC = () => {
         </button>
       </Filters>
       <Content>
-        <HistoryFinanceCard
-          tagColor="#e44c4e"
-          title="Conta de Luz"
-          subtitle="17/02/1994"
-          amout="R$ 250,00"
-        />
+        {data.map((item) => (
+          <HistoryFinanceCard
+            key={item.id}
+            tagColor={item.tagColor}
+            title={item.description}
+            subtitle={item.amountFormated}
+            amout={item.dateFormated}
+          />
+        ))}
       </Content>
     </Container>
   );
