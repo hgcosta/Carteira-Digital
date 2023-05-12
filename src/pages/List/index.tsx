@@ -25,11 +25,11 @@ interface IData {
 }
 
 const List: React.FC = () => {
-  const [monthSelected, setMonthSelected] = useState<string>(
-    String(new Date().getMonth() + 1)
+  const [monthSelected, setMonthSelected] = useState<number>(
+    new Date().getMonth() + 1
   );
-  const [yearSelected, setYearSelected] = useState<string>(
-    String(new Date().getFullYear())
+  const [yearSelected, setYearSelected] = useState<number>(
+    new Date().getFullYear()
   );
 
   const [selectedFrequency, setSelectedFrequency] = useState([
@@ -92,11 +92,29 @@ const List: React.FC = () => {
     }
   };
 
+  const handleMonthSelected = (month: string) => {
+    try {
+      const parseMonth = Number(month);
+      setMonthSelected(parseMonth);
+    } catch (error) {
+      throw new Error("Invalid Month value. Is Accept 0 - 24");
+    }
+  };
+
+  const handleYearsSelected = (year: string) => {
+    try {
+      const parseYear = Number(year);
+      setYearSelected(parseYear);
+    } catch (error) {
+      throw new Error("Invalid Year value. Is accept inter number");
+    }
+  };
+
   useEffect(() => {
     const filteredDate = listData.filter((item) => {
       const date = new Date(item.date);
-      const month = String(date.getMonth() + 1);
-      const year = String(date.getFullYear());
+      const month = date.getMonth() + 1;
+      const year = date.getFullYear();
 
       return (
         month === monthSelected &&
@@ -126,12 +144,12 @@ const List: React.FC = () => {
       >
         <SelectInput
           options={months}
-          onChange={(e) => setMonthSelected(e.target.value)}
+          onChange={(e) => handleMonthSelected(e.target.value)}
           defaultValue={monthSelected}
         />
         <SelectInput
           options={years}
-          onChange={(e) => setYearSelected(e.target.value)}
+          onChange={(e) => handleYearsSelected(e.target.value)}
           defaultValue={yearSelected}
         />
       </ContentHeader>
