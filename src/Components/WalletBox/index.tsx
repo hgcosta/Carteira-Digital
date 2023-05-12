@@ -2,6 +2,8 @@ import React, { useMemo } from "react";
 
 import { Container } from "./styles";
 
+import CountUp from "react-countup";
+
 import dolarImg from "../../assets/dollar.svg";
 import arrowUpImg from "../../assets/arrow-up.svg";
 import arrowDownImg from "../../assets/arrow-down.svg";
@@ -37,7 +39,16 @@ const WalletBox: React.FC<IWalletBoxProps> = ({
   return (
     <Container color={color}>
       <span>{title}</span>
-      <h1>{amout}</h1>
+      <h1>
+        <CountUp
+          end={amout}
+          prefix={"R$ "}
+          separator="."
+          decimal=","
+          decimals={2}
+          preserveValue={true}
+        />
+      </h1>
       <small>{footerLabel}</small>
       <img src={iconSelected} alt={title} />
     </Container>
