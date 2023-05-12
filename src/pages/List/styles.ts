@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div``;
 
-export const Content = styled.div``;
+export const Content = styled.main``;
 
 export const Filters = styled.div`
   width: 100%;
@@ -10,6 +10,7 @@ export const Filters = styled.div`
   justify-content: center;
   align-items: center;
   margin-bottom: 45px;
+
   .tag-filter {
     font-size: 15px;
     font-weight: 500;
