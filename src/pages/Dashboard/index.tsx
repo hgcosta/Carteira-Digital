@@ -4,6 +4,9 @@ import { Container, Content } from "./styles";
 
 import SelectInput from "../../Components/SelectInput";
 import WalletBox from "../../Components/WalletBox";
+import MenssageBox from "../../Components/MenssageBox";
+import happyImg from "../../assets/happy.svg";
+import sadImg from "../../assets/sad.svg";
 
 import ContentHeader from "../../Components/ContentHeader";
 import ListOfmonths from "../../utils/months";
@@ -101,6 +104,18 @@ const Dashboard: React.FC = () => {
           amout={1000.0}
           footerLabel="Atualizado com base nas saídas"
           icon="arrowDown"
+        />
+        <MenssageBox
+          title="Muito Bem!"
+          description="Sua Carteira está positiva!"
+          footerText="Continue assim, considere investir o seu saldo."
+          icon={happyImg}
+        />
+        <MenssageBox
+          title="Muito Bem!"
+          description="Sua Carteira está positiva!"
+          footerText="Continue assim, considere investir o seu saldo."
+          icon={sadImg}
         />
       </Content>
     </Container>
