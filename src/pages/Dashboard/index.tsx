@@ -5,7 +5,7 @@ import { Container, Content } from "./styles";
 import SelectInput from "../../Components/SelectInput";
 import WalletBox from "../../Components/WalletBox";
 import MenssageBox from "../../Components/MenssageBox";
-import PierChart from "../../Components/PierChart";
+import PierChartBox from "../../Components/PierChartBox";
 import happyImg from "../../assets/happy.svg";
 import sadImg from "../../assets/sad.svg";
 import grinningImg from "../../assets/grinning.svg";
@@ -118,6 +118,30 @@ const Dashboard: React.FC = () => {
     }
   }, [totalBalance]);
 
+  const relationExpensesVerusGains = useMemo(() => {
+    const total = totalGains + totalExpenses;
+
+    const persentGains = (totalGains / total) * 100;
+    const persentExpenses = (totalExpenses / total) * 100;
+
+    const data = [
+      {
+        name: "Entradas",
+        persent: Number(persentGains.toFixed(1)),
+        value: totalGains,
+        color: "#E44C4E",
+      },
+      {
+        name: "Saídas",
+        persent: Number(persentExpenses.toFixed(1)),
+        value: totalExpenses,
+        color: "rgb(247, 147, 27)",
+      },
+    ];
+
+    return data;
+  }, [totalGains, totalExpenses]);
+
   const handleMonthSelected = (month: string) => {
     try {
       const parseMonth = Number(month);
@@ -178,7 +202,7 @@ const Dashboard: React.FC = () => {
           footerText={message.footerText}
           icon={message.icon}
         />
-        <PierChart />
+        <PierChartBox data={relationExpensesVerusGains} />
       </Content>
     </Container>
   );

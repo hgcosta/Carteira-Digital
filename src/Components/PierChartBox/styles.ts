@@ -58,4 +58,10 @@ export const Legend = styled.li<ILegendProps>`
   }
 `;
 
-export const SideRight = styled.main``;
+export const SideRight = styled.main`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 260px;
+  width: 260px;
+`;
