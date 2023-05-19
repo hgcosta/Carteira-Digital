@@ -26,7 +26,7 @@ const PierChartBox: React.FC<IPierChartProps> = ({ data }) => (
       <LegendContainer>
         {data.map((indicator) => (
           <Legend key={indicator.name} color={indicator.color}>
-            <div>{indicator.persent}</div>
+            <div>{indicator.persent}%</div>
             <span>{indicator.name}</span>
           </Legend>
         ))}

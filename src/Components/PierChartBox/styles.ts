@@ -46,10 +46,10 @@ export const Legend = styled.li<ILegendProps>`
   margin-bottom: 7px;
   > div {
     background-color: ${(props) => props.color};
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
     border-radius: 5px;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 40px;
     text-align: center;
   }

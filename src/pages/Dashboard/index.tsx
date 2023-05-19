@@ -9,6 +9,7 @@ import PierChartBox from "../../Components/PierChartBox";
 import happyImg from "../../assets/happy.svg";
 import sadImg from "../../assets/sad.svg";
 import grinningImg from "../../assets/grinning.svg";
+import HistoryBox from "../../Components/HistoryBox";
 
 import ContentHeader from "../../Components/ContentHeader";
 import ListOfmonths from "../../utils/months";
@@ -142,6 +143,57 @@ const Dashboard: React.FC = () => {
     return data;
   }, [totalGains, totalExpenses]);
 
+  const historyData = useMemo(() => {
+    return ListOfmonths.map((_, indexMonth) => {
+      let amountEntry = 0;
+      gains.forEach((gain) => {
+        const date = new Date(gain.date);
+        const gainMonth = date.getMonth();
+        const gainYear = date.getFullYear();
+        if (gainMonth === indexMonth && gainYear === yearSelected) {
+          try {
+            amountEntry += Number(gain.amount);
+          } catch {
+            throw new Error(
+              "AmountEntry is invalid. amountEntry must be valid number"
+            );
+          }
+        }
+      });
+
+      let amoutOutput = 0;
+      expenses.forEach((expense) => {
+        const date = new Date(expense.date);
+        const expenseMonth = date.getMonth();
+        const expenseYear = date.getFullYear();
+        if (expenseMonth === indexMonth && expenseYear === yearSelected) {
+          try {
+            amoutOutput += Number(expense.amount);
+          } catch {
+            throw new Error(
+              "amoutOutput is invalid. amoutOutput must be valid number"
+            );
+          }
+        }
+      });
+
+      return {
+        monthNumber: indexMonth,
+        month: ListOfmonths[indexMonth].substring(0, 3),
+        amountEntry,
+        amoutOutput,
+      };
+    }).filter((item) => {
+      const currentMonth = new Date().getMonth();
+      const currentYear = new Date().getFullYear();
+
+      return (
+        (yearSelected === currentYear && item.monthNumber <= currentMonth) ||
+        yearSelected < currentYear
+      );
+    });
+  }, [yearSelected]);
+  console.log(historyData);
   const handleMonthSelected = (month: string) => {
     try {
       const parseMonth = Number(month);
@@ -203,6 +255,12 @@ const Dashboard: React.FC = () => {
           icon={message.icon}
         />
         <PierChartBox data={relationExpensesVerusGains} />
+
+        <HistoryBox
+          data={historyData}
+          lineColorAmoutEntry="#e44c4e"
+          lineColorAmoutOutput="#f7931B"
+        />
       </Content>
     </Container>
   );
