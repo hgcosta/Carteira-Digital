@@ -13,7 +13,7 @@ import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 interface IPierChartProps {
   data: {
     name: string;
-    persent: number;
+    percent: number;
     value: number;
     color: string;
   }[];
@@ -26,7 +26,7 @@ const PierChartBox: React.FC<IPierChartProps> = ({ data }) => (
       <LegendContainer>
         {data.map((indicator) => (
           <Legend key={indicator.name} color={indicator.color}>
-            <div>{indicator.persent}%</div>
+            <div>{indicator.percent}%</div>
             <span>{indicator.name}</span>
           </Legend>
         ))}
