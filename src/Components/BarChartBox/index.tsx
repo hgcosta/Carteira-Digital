@@ -36,16 +36,19 @@ const BarChatBox: React.FC<IBarChartBox> = ({ title, data }) => {
       <SideRight>
         <ResponsiveContainer>
           <BarChart data={data}>
-            <Bar dataKey="amount">
+            <Bar dataKey="amount" name="Valor">
               {data.map((indicator) => (
                 <Cell
                   key={indicator.name}
-                  cursor="ponter"
+                  cursor="pointer"
                   fill={indicator.color}
                 ></Cell>
               ))}
             </Bar>
-            {/* <Tooltip formatter={(value) => formatCurrency(Number(value))} /> */}
+            <Tooltip
+              formatter={(value) => formatCurrency(Number(value))}
+              cursor={{ fill: "none" }}
+            />
           </BarChart>
         </ResponsiveContainer>
       </SideRight>
