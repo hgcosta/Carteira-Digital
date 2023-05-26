@@ -15,10 +15,6 @@ const Toggle: React.FC<IToggleProps> = ({
   check,
   onChange,
 }) => {
-  const [checked, setChecked] = useState(false);
-  const handleChange = () => {
-    setChecked(!checked);
-  };
   return (
     <Container>
       <ToggleLabel>{labelLeft}</ToggleLabel>
