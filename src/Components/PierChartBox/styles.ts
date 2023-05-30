@@ -86,12 +86,17 @@ export const Legend = styled.li<ILegendProps>`
     margin: 3px 0;
 
     > div {
-      height: 35px;
-      width: 35px;
-      line-height: 35px;
+      height: 40px;
+      width: 40px;
+      line-height: 40px;
     }
     > span {
       margin-left: 7px;
+    }
+  }
+  @media (max-width: 420px) {
+    > div {
+      font-size: 12px;
     }
   }
 `;
