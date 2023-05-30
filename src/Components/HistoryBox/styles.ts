@@ -12,11 +12,21 @@ export const Container = styled.div`
   color: ${(props) => props.theme.colors.white};
   padding: 30px 20px;
   border-radius: 7px;
+  @media (max-width: 770px) {
+    padding: 30px 5px;
+  }
 `;
 
 export const ChartContainer = styled.div`
   height: 360px;
   margin-top: 20px;
+  @media (max-width: 770px) {
+    height: 200px;
+  }
+
+  @media (max-width: 420px) {
+    height: 180px;
+  }
 `;
 
 export const Header = styled.header`
@@ -25,6 +35,15 @@ export const Header = styled.header`
   width: 100%;
   > h2 {
     margin: 0px 16px;
+  }
+
+  @media (max-width: 770px) {
+    display: flex;
+    flex-direction: column;
+
+    > h2 {
+      margin-bottom: 1rem;
+    }
   }
 `;
 
