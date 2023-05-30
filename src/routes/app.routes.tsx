@@ -10,6 +10,8 @@ const AppRoutes: React.FC = () => {
     <Layout>
       <Router>
         <Routes>
+          <Route path="/" element={<Dashboard />} index />{" "}
+          {/* Definindo a rota Dashboard como a principal */}
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/list/:type" element={<List />} />
         </Routes>

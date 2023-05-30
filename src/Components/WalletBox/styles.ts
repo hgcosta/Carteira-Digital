@@ -33,4 +33,18 @@ export const Container = styled.div`
     position: absolute;
     bottom: 10px;
   }
+
+  @media (max-width: 770px) {
+    > span {
+      font-size: 14px;
+    }
+    > h1 {
+      word-wrap: break-word;
+      font-size: 18px;
+    }
+  }
+
+  @media (max-width: 420px) {
+    width: 100%;
+  }
 `;

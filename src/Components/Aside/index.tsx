@@ -36,10 +36,6 @@ const Aside: React.FC = () => {
           <MdArrowDownward />
           Saídas
         </MenuItemLink>
-        <MenuItemLink href="#">
-          <MdExitToApp />
-          Sair
-        </MenuItemLink>
       </MenuContainer>
     </Container>
   );
