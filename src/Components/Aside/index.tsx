@@ -15,19 +15,35 @@ import {
   MenuContainer,
   MenuItemLink,
   ToggleMenu,
+  ThemeToggleFooter,
 } from "./styles";
+
+import Toggle from "../Toggle";
+
+import { useTheme } from "../../hooks";
 
 import logoImg from "../../assets/logo.svg";
 
 const Aside: React.FC = () => {
   const [toggleMenuIsOpened, setToggleMenuIsOpened] = useState(false);
 
+  const { toggleTheme, theme } = useTheme();
+
+  const [darkTheme, setDarkTheme] = useState(() =>
+    theme.title === "dark" ? true : false
+  );
+
+  const handleChangeTheme = () => {
+    setDarkTheme(!darkTheme);
+    toggleTheme();
+  };
+
   const handleToggleMenu = () => {
     setToggleMenuIsOpened(!toggleMenuIsOpened);
   };
 
   return (
-    <Container menuIsOpen={true}>
+    <Container menuIsOpen={toggleMenuIsOpened}>
       <Header>
         <ToggleMenu onClick={handleToggleMenu}>
           {toggleMenuIsOpened ? <MdClose /> : <MdMenu />}
@@ -49,6 +65,14 @@ const Aside: React.FC = () => {
           Saídas
         </MenuItemLink>
       </MenuContainer>
+      <ThemeToggleFooter menuIsOpen={toggleMenuIsOpened}>
+        <Toggle
+          labelLeft="Light"
+          labelRight="Dark"
+          check={darkTheme}
+          onChange={handleChangeTheme}
+        />
+      </ThemeToggleFooter>
     </Container>
   );
 };
