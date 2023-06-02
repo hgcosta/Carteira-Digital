@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   MdDashboard,
   MdArrowDownward,
   MdArrowUpward,
   MdExitToApp,
+  MdClose,
+  MdMenu,
 } from "react-icons/md";
 import {
   Container,
@@ -12,14 +14,24 @@ import {
   Title,
   MenuContainer,
   MenuItemLink,
+  ToggleMenu,
 } from "./styles";
 
 import logoImg from "../../assets/logo.svg";
 
 const Aside: React.FC = () => {
+  const [toggleMenuIsOpened, setToggleMenuIsOpened] = useState(false);
+
+  const handleToggleMenu = () => {
+    setToggleMenuIsOpened(!toggleMenuIsOpened);
+  };
+
   return (
-    <Container>
+    <Container menuIsOpen={true}>
       <Header>
+        <ToggleMenu onClick={handleToggleMenu}>
+          {toggleMenuIsOpened ? <MdClose /> : <MdMenu />}
+        </ToggleMenu>
         <LogoImg src={logoImg} alt="Logo Minha Cateira Digital" />
         <Title>Minha Carteira</Title>
       </Header>

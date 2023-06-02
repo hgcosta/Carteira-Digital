@@ -17,6 +17,9 @@ export const ContainerBarChart = styled.div`
   color: ${(props) => props.theme.colors.white};
   border-radius: 7px;
   display: flex;
+  @media (max-width: 770px) {
+    width: 100%;
+  }
 `;
 
 export const SideLeft = styled.aside`
@@ -25,6 +28,9 @@ export const SideLeft = styled.aside`
   > h2 {
     margin-left: 16px;
     margin-bottom: 10px;
+  }
+  @media (max-width: 770px) {
+    padding: 30px 5px;
   }
 `;
 
