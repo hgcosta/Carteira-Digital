@@ -1,12 +1,20 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 interface ILegendProps {
   color: string;
 }
 
-export const Container = styled.div`
-  display: flex;
-  background-color: red;
+const animate = keyframes`
+  0%{
+    opacity: 0;
+  }
+  50%{
+    opacity:.3;
+  }
+  100%{
+    opacity:1
+  }
+
 `;
 
 export const ContainerBarChart = styled.div`
@@ -17,6 +25,8 @@ export const ContainerBarChart = styled.div`
   color: ${(props) => props.theme.colors.white};
   border-radius: 7px;
   display: flex;
+  animation: ${animate} 1s;
+
   @media (max-width: 770px) {
     width: 100%;
   }

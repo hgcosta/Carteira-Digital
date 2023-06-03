@@ -1,8 +1,19 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
-interface IContainerProps {
-  color: string;
-}
+const animate = keyframes`
+  0%{
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  50%{
+    opacity:.3;
+  }
+  100%{
+    transform:translate(0px);
+    opacity:1
+  }
+
+`;
 
 export const Container = styled.div`
   background-color: ${(props) => props.color};
@@ -14,6 +25,7 @@ export const Container = styled.div`
   padding: 10px 20px;
   position: relative;
   overflow: hidden;
+  animation: ${animate} 0.5s;
 
   > img {
     position: absolute;
